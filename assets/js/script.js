@@ -1,19 +1,24 @@
 var startEl = document.querySelector(".start");
 var startTextEl = document.querySelector(".startQuiz");
 var startBtn = document.getElementById("startBtn");
+var formEl = document.querySelector("form");
+formEl.style.display = "none";
 
 
 function startQuiz() {
     startBtn.addEventListener("click", function () {
         startTextEl.textContent = " ";
         startBtn.textContent = "End Quiz";
+        formEl.style.display = "block";
+        var submitBtn = document.createElement("button");
+        submitBtn.textContent = "Next";
+        formEl.appendChild(submitBtn);
+
+
         startTime();
         //seeQuestion(question);
 
     })
-
-
-
 }
 startQuiz();
 
@@ -36,12 +41,14 @@ function startTime() {
     }, 1000);
 }
 
-//enter timerUpMessage displayed at end (score, results, form to save score with contact info)
+//enter timerUpMessage displayed at end (score, results, form to save score with contact info) and make form element dissapear when time = 0 (when timerUpMessage is called)
 function timerUpMessage() {
     timerEl.textContent = " ";
     var h1El = document.createElement("h1");
     h1El.textContent = "Time is Up! Quiz Results:";
     timerUpEl.appendChild(h1El);
+    formEl.style.display = "none"; // clear (hide) form element when timerUpMessage is called from startTime (if time=0)
+    startBtn.style.display = "none"; // clear (hide) startBtn (changed text in TimerUp function) when timerUpMessage is called from startTime (when time=0)
 }
 
 //startTime();
@@ -60,6 +67,7 @@ function seeQuestion(q) {
     h2Div.textContent = q.title;
     //select all input elements with the same class
     var answers = document.querySelectorAll('label');
+
     //console.log(option);
 
     // for each of the answers, display text from the question object using iterations through the options array
@@ -69,8 +77,15 @@ function seeQuestion(q) {
     });
 };
 
+var question2 = {
+    title: 'Question 2',
+    options: ['to', 'to', 'to', 'to'],
+    answer: 2
+};
+
 
 //seeQuestion(question);
+
 
 
 var select = document.getElementById('choice');
