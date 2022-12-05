@@ -1,3 +1,51 @@
+var startEl = document.querySelector(".start");
+var startTextEl = document.querySelector(".startQuiz");
+var startBtn = document.getElementById("startBtn");
+
+
+function startQuiz() {
+    startBtn.addEventListener("click", function () {
+        startTextEl.textContent = " ";
+        startBtn.textContent = "End Quiz";
+        startTime();
+        //seeQuestion(question);
+
+    })
+
+
+
+}
+startQuiz();
+
+var timerEl = document.querySelector(".time");
+var timerUpEl = document.getElementById("timeUp");
+var updateTime;
+var secondsLeft = 10;
+
+function startTime() {
+    var updateTime = setInterval(function () {
+        secondsLeft--;
+        timerEl.textContent = secondsLeft + " seconds left";
+        seeQuestion(question);
+
+        if (secondsLeft === 0) {
+            clearInterval(updateTime);
+            timerUpMessage();
+        }
+
+    }, 1000);
+}
+
+//enter timerUpMessage displayed at end (score, results, form to save score with contact info)
+function timerUpMessage() {
+    timerEl.textContent = " ";
+    var h1El = document.createElement("h1");
+    h1El.textContent = "Time is Up! Quiz Results:";
+    timerUpEl.appendChild(h1El);
+}
+
+//startTime();
+
 var question = {
     title: 'Question 1',
     options: ['an', 'an', 'an', 'an'],
@@ -19,27 +67,44 @@ function seeQuestion(q) {
         element.textContent = q.options[index];
 
     });
-}
+};
 
-seeQuestion(question);
-scoreDiv = document.getElementById('scoreDiv');
-scoreDiv = 0;
+
+//seeQuestion(question);
+
+
+var select = document.getElementById('choice');
+select.addEventListener("keyof", function () {
+    if (select.value == checked) {
+        console.log('not');
+    } else {
+        console.log('clicked')
+    }
+})
+
+// var select = document.getElementById('a1');
+// select.addEventListener('click', function () {
+//     console.log('Clicked!');
+// });
+
 
 //var selectInput = document.querySelectorAll('.option')
 
-function answerQuestion(q) {
-    var selectInput = document.querySelectorAll('.option');
-    selectInput.addEventListener('click', function (e, index) {
-        e.preventDefault();
-        if (selectInput.value === q.answer[index]) {
-            scoreDiv++;
-            var count = document.createElement("p")
-            count.textContent = scoreDiv.value;
-            scoreDiv.appendChild(count);
-        }
 
-    });
-};
+
+// function answerQuestion(q) {
+//     var selectInput = document.querySelectorAll('.option');
+//     selectInput.addEventListener('click', function (e, index) {
+//         e.preventDefault();
+//         if (selectInput.value === q.answer[index]) {
+//             scoreDiv++;
+//             var count = document.createElement("p")
+//             count.textContent = scoreDiv.value;
+//             scoreDiv.appendChild(count);
+//         }
+
+//     });
+// };
 
 
 
@@ -54,4 +119,3 @@ function answerQuestion(q) {
 // nextBtn.addEventListener('click', function () {
 //     console.log('clicked next');
 
-// })
