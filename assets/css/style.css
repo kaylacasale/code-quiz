@@ -1,15 +1,84 @@
 body {
     font-size: 30px;
-    font-family: 'Courier New', Courier, monospace;
-    background-image: url('/Users/kaylacasale/Desktop/UCLA/homework/04-homework/code-quiz/assets/images/macos ventura wallpaper-white.jpeg');
+    font-family: 'Comfortaa', cursive;
+    background-image: url('/Users/kaylacasale/Desktop/UCLA/homework/04-homework/code-quiz/assets/images/wallpaper1.jpeg');
     background-size: 1500px 1000px;
+    box-sizing: block;
 
 }
+
+.time {
+    background-color: aliceblue;
+    border-radius: 20px;
+    font-size: 25px;
+    width: 20%;
+    float: right;
+    padding: 10px;
+
+
+}
+
+.start {
+    float: left;
+    width: 100%;
+    /* text-align: left; */
+    margin-left: 100px;
+    /* margin-top: 20px; */
+}
+
+
+
 
 form {
     margin-left: 40px;
+    display: flex;
+    float: left;
+}
+
+#questionHeader {
+    margin-left: 20px;
 }
 
 #startBtn {
+    margin-left: 10px;
     font-size: 25px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgb(189, 201, 248);
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    border-color: aliceblue;
+}
+
+#startBtn:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
+
+#quiz {
+    float: left;
+    text-align: center;
+    align-items: center;
+}
+
+#save {
+    margin-left: 25px;
+    font-size: 25px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgb(189, 201, 248);
+    padding: 15px 40px;
+    border-radius: 4px;
+    font-weight: normal;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    border-color: aliceblue;
+}
+
+#save:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }

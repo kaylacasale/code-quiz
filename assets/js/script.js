@@ -82,6 +82,7 @@ function startTime() {
         }
 
     }, 1000);
+
 }
 
 //enter timerUpMessage displayed at end (score, results, form to save score with contact info) and make form element dissapear when time = 0 (when timerUpMessage is called)
@@ -90,18 +91,19 @@ function timerUpMessage() {
     var h1El = document.createElement("h1");
     h1El.textContent = "Time is Up! Quiz Results:";
     timerUpEl.appendChild(h1El);
+    timerUpEl.setAttribute("style", "font-size: 20px; background-color: aliceblue; font-weight: bold; ")
     formEl.style.display = "none"; // clear (hide) form element when timerUpMessage is called from startTime (if time=0)
     startBtn.style.display = "none"; // clear (hide) startBtn (changed text in TimerUp function) when timerUpMessage is called from startTime (when time=0)
     submitFormEl.style.display = "block";
 
 }
 
-//startTime();
 
-//var title = ['Question 1']
-//wrap- array of objects (describing real world)
+
+
+//wrap- array of objects 
 //mimic a for loop
-//var scoreCount = document.getElementById("scoreDiv")
+
 var scoreCount = document.getElementById("scoreDiv")
 var currentScore = 0;
 var currentQuestion = 0; // ++ 
@@ -116,7 +118,7 @@ var questions = [
         title: "Question 2",
         option: ["b1", "b2", "b3", "b4"],
         answer: 1,
-        score: 1
+        score: 1 //possibly unneccessary 
     },
     {
         title: "Question 3",
@@ -139,6 +141,8 @@ function renderQuestion() {
     var options = question.option;
     var answer = question.answer;
     var score = question.score;
+    // var bodyEl = document.querySelector("body");
+    // bodyEl.setAttribute("src", "code-quiz/assets/images/wallpaper-desktop.jpeg")
 
     var questionsHeader = document.querySelector("#questionHeader")
     var choice1Btn = document.querySelector("#choice1")
@@ -210,21 +214,22 @@ function checkAnswer(event) {
     scoreNow = localStorage.getItem("count");
     if (event.target.dataset.correct == 'true') {
         result = document.createElement("p")
-        result.textContent = "Correct!";
+        result.textContent = "1 - Correct!";
         formEl.appendChild(result);
         currentScore++
         scoreNow = currentScore;
-        scoreCount.textContent = scoreNow;
+        scoreCount.textContent = "SCORE: " + scoreNow;
         localStorage.setItem("score", scoreNow);
         //var addPoint = questions.score;
         //console.log(addPoint)
     } else if (event.target.dataset.correct != 'true') {
         result = document.createElement("p")
-        result.textContent = "Incorrect :(";
+        result.textContent = "0 - Incorrect :(";
         formEl.appendChild(result);
-        currentScore;
-        var scoreNow = currentScore;
-        scoreCount.textContent = scoreNow;
+        //currentScore;
+        scoreNow = currentScore;
+        scoreCount.textContent = "SCORE: " + currentScore;
+        //scoreCount.textContent = scoreNow;
     }
     //console.log(userAnswer.value);
     nextQuestion();
