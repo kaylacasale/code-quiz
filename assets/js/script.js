@@ -89,7 +89,7 @@ var questions = [
 
 function renderQuestion() {
     var question = questions[currentQuestion];
-    var title = question.title; //make variables for each based on question
+    var title = question["title"]; //make variables for each based on question
     var options = question.option;
     var answer = question.answer;
     var score = question.score;
@@ -160,13 +160,15 @@ function checkAnswer(event) {
     //var userAnswer = event.target;
     console.log(event.target.answer)
     console.log(event.target.dataset.correct);
+    var scoreNew = localStorage.getItem("count");
     if (event.target.dataset.correct == 'true') {
         result = document.createElement("p")
         result.textContent = "Correct!";
         formEl.appendChild(result);
         currentScore++
-        var scoreNow = currentScore;
+        scoreNow = currentScore;
         scoreCount.textContent = scoreNow;
+        localStorage.setItem("score", scoreNow);
         //var addPoint = questions.score;
         //console.log(addPoint)
     } else if (event.target.dataset.correct != 'true') {
