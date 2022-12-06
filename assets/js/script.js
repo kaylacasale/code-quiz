@@ -55,6 +55,9 @@ function timerUpMessage() {
 //var title = ['Question 1']
 //wrap- array of objects (describing real world)
 //mimic a for loop
+//var scoreCount = document.getElementById("scoreDiv")
+var scoreCount = document.getElementById("scoreDiv")
+var currentScore = 0;
 var currentQuestion = 0; // ++ 
 var questions = [
     {
@@ -116,6 +119,22 @@ function renderQuestion() {
     }
 
 
+    //var scoreNow = 0;
+    // if (choice2Btn.dataset.correct = true) {
+    //     currentScore++
+    //     var scoreNow = currentScore;
+    //     console.log(scoreNow)
+    // }
+
+
+    // var scoreNow = + score
+    // //currentScore.textContent = scoreNow;
+    // console.log(currentScore);
+    // scoreCount.textContent = scoreNow;
+
+
+
+
     choice1Btn.addEventListener("click", handleChoiceClick)
     choice2Btn.addEventListener("click", handleChoiceClick)
     choice3Btn.addEventListener("click", handleChoiceClick)
@@ -145,10 +164,18 @@ function checkAnswer(event) {
         result = document.createElement("p")
         result.textContent = "Correct!";
         formEl.appendChild(result);
+        currentScore++
+        var scoreNow = currentScore;
+        scoreCount.textContent = scoreNow;
+        //var addPoint = questions.score;
+        //console.log(addPoint)
     } else if (event.target.dataset.correct != 'true') {
         result = document.createElement("p")
         result.textContent = "Incorrect :(";
         formEl.appendChild(result);
+        currentScore;
+        var scoreNow = currentScore;
+        scoreCount.textContent = scoreNow;
     }
     //console.log(userAnswer.value);
     nextQuestion();
@@ -173,6 +200,7 @@ function nextQuestion() {
     //see if answer is right
     //show next button
 }
+
 
 
 
