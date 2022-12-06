@@ -20,7 +20,7 @@ function saveScore() {
         //score: scoreCount.value
     }
     localStorage.setItem("userInput", JSON.stringify(userInput));
-    localStorage.setItem("scoreNow", JSON.stringify(scoreNow));
+    //localStorage.setItem("scoreNow", JSON.stringify(scoreNow));
 }
 
 function renderScore() {
@@ -54,7 +54,8 @@ function startQuiz() {
         startBtn.textContent = "End Quiz";
         formEl.style.display = "block";
         submitBtn = document.createElement("button");
-        submitBtn.textContent = "Next";
+        //submitBtn.textContent = "Next";
+        submitBtn.style.display = "none";
         formEl.appendChild(submitBtn);
 
         renderQuestion();

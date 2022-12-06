@@ -1,0 +1,15 @@
+body {
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url('/Users/kaylacasale/Desktop/UCLA/homework/04-homework/code-quiz/assets/images/macos ventura wallpaper-white.jpeg');
+    background-size: 1500px 1000px;
+
+}
+
+form {
+    margin-left: 40px;
+}
+
+#startBtn {
+    font-size: 25px;
+}
