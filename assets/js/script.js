@@ -98,7 +98,7 @@ function renderQuestion() {
     var choice4Btn = document.querySelector("#choice4")
 
     questionsHeader.textContent = title;
-    console.log(options[0]);
+    //console.log(options[0]);
     choice1Btn.innerText = options[0];
     choice2Btn.innerText = options[1];
     choice3Btn.innerText = options[2];
@@ -106,6 +106,7 @@ function renderQuestion() {
 
     if (answer === 0) {
         choice1Btn.dataset.correct = true;
+        console.log(correctOption)
     } else if (answer === 1) {
         choice2Btn.dataset.correct = true;
     } else if (answer === 2) {
@@ -114,23 +115,66 @@ function renderQuestion() {
         choice4Btn.dataset.correct = true;
     }
 
+
     choice1Btn.addEventListener("click", handleChoiceClick)
     choice2Btn.addEventListener("click", handleChoiceClick)
     choice3Btn.addEventListener("click", handleChoiceClick)
     choice4Btn.addEventListener("click", handleChoiceClick)
+
+    // choice1Btn.addEventListener("click", checkAnswer)
+    // choice2Btn.addEventListener("click", checkAnswer)
+    // choice3Btn.addEventListener("click", checkAnswer)
+    // choice4Btn.addEventListener("click", checkAnswer)
+
+
+}
+function handleChoiceClick(event) {
+    event.preventDefault();
+    checkAnswer(event);
+    //nextQuestion(event);
 }
 
-function handleChoiceClick(event) {
+var result;
 
+function checkAnswer(event) {
     event.preventDefault();
-    var nextQuestion = currentQuestion++
-    renderQuestion(nextQuestion);
+    //var userAnswer = event.target;
+    console.log(event.target.answer)
+    console.log(event.target.dataset.correct);
+    if (event.target.dataset.correct == 'true') {
+        result = document.createElement("p")
+        result.textContent = "Correct!";
+        formEl.appendChild(result);
+    } else if (event.target.dataset.correct != 'true') {
+        result = document.createElement("p")
+        result.textContent = "Incorrect :(";
+        formEl.appendChild(result);
+    }
+    //console.log(userAnswer.value);
+    nextQuestion();
+
+
+    //console.log(questions.answer[currentQuestion]);
+    //var answerCorrect = questions.a
+    //console.log(questions.option[questions.answer]);
+
+
+}
+function nextQuestion() {
+
+    //event.preventDefault();
+    currentQuestion++
+    renderQuestion();
+
+
 
 
 
     //see if answer is right
     //show next button
 }
+
+
 
 // function nextQuestion(event) {
 //     currentQuestion++
