@@ -14,9 +14,8 @@ function startQuiz() {
         submitBtn.textContent = "Next";
         formEl.appendChild(submitBtn);
 
-
+        renderQuestion();
         startTime();
-        //seeQuestion(question);
 
     })
 }
@@ -31,7 +30,7 @@ function startTime() {
     var updateTime = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = secondsLeft + " seconds left";
-        seeQuestion(question);
+        // seeQuestion(question);
 
         if (secondsLeft === 0) {
             clearInterval(updateTime);
@@ -53,200 +52,279 @@ function timerUpMessage() {
 
 //startTime();
 
-var question = {
-    title: ['Question 1', 'Question 2', 'Question 3'],
-    options: (['an', 'an', 'an', 'an'], ['to', 'for', 'to', 'to']),
-    //answer: 1
-};
+//var title = ['Question 1']
+//wrap- array of objects (describing real world)
+//mimic a for loop
+var currentQuestion = 0; // ++ 
+var questions = [
+    {
+        title: "Question 1",
+        options: ["a1", "a2", "a3", "a4"],
+        answer: 1,
+        score: 1
+    },
+    {
+        title: "Question 2",
+        option: ["a1", "a2", "a3", "a4"],
+        answer: 1,
+        score: 1
 
-var h2Div = document.getElementById('headerDiv')
-var answers = document.querySelectorAll('label');
-h2Div.textContent = question.title[0];
-answers.textContent = question.options[0]
-answers.forEach(function (element, index) {
-    element.textContent = question.options[index];
-})
-var length = question.title.length;
-//h2Div.textContent = question.title[0]
-//answers.textContent = question.options[0[0]]
-// show each question
-function seeQuestion(q) {
-    //h2Div.textContent = q.title;
-    // var h2Div = document.getElementById('headerDiv')
-    // var answers = document.querySelectorAll('label');
-    // h2Div.textContent = q.title[0]
-    // answers.textContent = q.options[0[0]]
+    }
+]
 
 
+function renderQuestion() {
+    var question = questions[currentQuestion];
+    var title = question.title; //make variables for each based on question
+    var options = question.options;
+    var answer = question.answer;
+    var score = question.score;
 
+    var questionsHeader = document.querySelector("#questionHeader")
+    var choice1Btn = document.querySelector("#choice1")
+    var choice2Btn = document.querySelector("#choice2")
+    var choice3Btn = document.querySelector("#choice3")
+    var choice4Btn = document.querySelector("#choice4")
 
+    questionsHeader.textContent = title;
+    console.log(options[0]);
+    choice1Btn.innerText = options[0];
+    choice2Btn.innerText = options[1];
+    choice3Btn.innerText = options[2];
+    choice4Btn.innerText = options[3];
 
+    if (answer === 0) {
+        choice1Btn.dataset.correct = true;
+    } else if (answer === 1) {
+        choice2Btn.dataset.correct = true;
+    } else if (answer === 2) {
+        choice3Btn.dataset.correct = true;
+    } else {
+        choice4Btn.dataset.correct = true;
+    }
 
-    submitBtn.addEventListener('click', function (event) {
-        //h2Div.textContent = question.title[0];
-        //answers.textContent = question.options[0]
-        for (var i = 0; i < question.title.length; i++) {
-            console.log(question.title[i])
-            event.preventDefault()
-            var nextq = q.title[i];
-            console.log(nextq)
-        }
-        for (var i = 0; i < q.options.length; i++) {
-            event.preventDefault();
-            var nextqa = q.options[i]
-            console.log(nextqa)
-
-        }
-
-
-        //q.title[i++]
-        // h2Div.textContent = q.title[i]
-        // answers.textContent = q.options[i]
-        // console.log("hi")
-
-        h2Div.textContent = nextq
-        answers.textContent = nextqa
-        console.log("hi")
-
-
-
-
-    })
-
-    //nextQuestion(q);
-
-
+    choice1Btn.addEventListener("click", handleChoiceClick)
+    choice2Btn.addEventListener("click", handleChoiceClick)
+    choice3Btn.addEventListener("click", handleChoiceClick)
+    choice4Btn.addEventListener("click", handleChoiceClick)
 }
 
-// submitBtn.addEventListener('click', function (event) {
-//     event.preventDefault();
-//nextQuestion(q);
-// for (var i = 0; i < q.title.length; i++) {
-//     h2Div.textContent = q.title[i]
-//     answers.textContent = q.options[i]
+function handleChoiceClick(event) {
 
-//q.title[i]
-//q.answers[[i]]
-//nextQuestion();
+    event.preventDefault();
+    var nextQuestion = currentQuestion++
+    renderQuestion(nextQuestion);
 
 
 
+    //see if answer is right
+    //show next button
+}
 
-//answers.textContent = q.option
-
-// submitBtn.addEventListener('click', function (event, array) {
-//     event.preventDefault();
-//     for (var i = 0; i < q.title.length; i++) {
-//         //element = event.target;
-//         //var element = event.target;
-
-//         // select dom element headerDiv by id and assign to variable
-//         //var h2Div = document.getElementById('headerDiv');
-//         // modify the text
-//         //question.title[i]++;
-//         h2Div.textContent = q.title[i];
-
-
-//         //for (var i = 0; i < q.title.length; i++) {
-//         //select all input elements with the same class
-//         //var answers = document.querySelectorAll('label');
-//         //answers.textContent = q.options[i];
-
-//         //console.log(option);
-
-//         // for each of the answers, display text from the question object using iterations through the options array
-//         answers.forEach(function (element, index) {
-//             element.textContent = q.options[index];
-//         })
-
-
-
-
-//function nextQuestion(q) {
-// submitBtn.addEventListener('click', function (event) {
-//     event.preventDefault();
-// console.log("hi")
-// for (var i = 0; i < q.length; i++) {
-//     q.title[i++]
-//     h2Div.textContent = q.title[i]
-//     answers.textContent = q.options[i]
-//     seeQuestion(i++)
-//     //seeQuestion(i++);
-//     //seeQuestion(q);
+// function nextQuestion(event) {
+//     currentQuestion++
+//     renderQuestion(currentQuestion);
 // }
-// ;
-
-
-
-// submitBtn.addEventListener('click', function (event) {
-//     event.preventDefault();
-//     for (var i = 0; i < q.title.length; i++) {
-//         var h2Div = document.getElementById('headerDiv');
-//         h2Div.textContent = q.title[i];
-//         var answers = document.querySelectorAll('label');
-//         answers.textContent = q.options[i];
-//         q.answer[i];
-
-
-
-
-
-//     }
-// })
-
-// var question2 = {
-//     title: 'Question 2',
-//     options: ['to', 'to', 'to', 'to'],
-//     answer: 2
+// var question = {
+//     title: ['Question 4', 'Question 2', 'Question 3'],
+//     options: (['an', 'an', 'an', 'an'], ['to', 'for', 'to', 'to']),
+//     //answer: 1
 // };
+// var counter = 0;
+// var h2Div = document.getElementById('headerDiv')
+// var answers = document.querySelectorAll('label');
+// h2Div.textContent = question.title[counter];
+// answers.textContent = question.options[counter]
+
+// answers.forEach(function (element, index) {
+//     element.textContent = question.options[index];
+// })
+// //var length = question.title.length;
+// //h2Div.textContent = question.title[0]
+// //answers.textContent = question.options[0[0]]
+// // show each question
+// function seeQuestion(q) {
+//     //h2Div.textContent = q.title;
+//     // var h2Div = document.getElementById('headerDiv')
+//     // var answers = document.querySelectorAll('label');
+//     // h2Div.textContent = q.title[0]
+//     // answers.textContent = q.options[0[0]]
+
+//     submitBtn.addEventListener('click', function (event) {
+//         //h2Div.textContent = question.title[0];
+//         //answers.textContent = question.options[0]
+//         //for (var i = 0; i < 2; i++) {
+//         //console.log(question.title[i])
+//         counter++
+
+//         console.log(q.title[counter]);
+//         event.preventDefault()
+//         var nextq = q.title[counter];
+//         //var nextq = q[i].title;
+//         console.log(nextq)
+//         h2Div.textContent = nextq;
+
+//         //for (var i = 0; i < 5; i++) {
+//         event.preventDefault();
+//         var nextqa = q[0].options[counter]
+//         console.log(nextqa)
+
+//         //}
 
 
-//seeQuestion(question);
+//         //q.title[i++]
+//         // h2Div.textContent = q.title[i]
+//         // answers.textContent = q.options[i]
+//         // console.log("hi")
+
+//         //h2Div.textContent = nextq
+//         answers.innerHTML = nextqa
+//         console.log("hi")
 
 
 
-var select = document.getElementById('choice');
-select.addEventListener("keyof", function () {
-    if (select.value == checked) {
-        console.log('not');
-    } else {
-        console.log('clicked')
-    }
-});
 
-// var select = document.getElementById('a1');
-// select.addEventListener('click', function () {
-//     console.log('Clicked!');
+//     })
+
+//     //nextQuestion(q);
+
+
+// }
+
+
+// // for (var i = 0; i < highScores.length; i++) {
+// //     var score = document.createElement("p");
+// //     score.textContent = highScores[i].initials
+// // }
+// // submitBtn.addEventListener('click', function (event) {
+// //     event.preventDefault();
+// //nextQuestion(q);
+// // for (var i = 0; i < q.title.length; i++) {
+// //     h2Div.textContent = q.title[i]
+// //     answers.textContent = q.options[i]
+
+// //q.title[i]
+// //q.answers[[i]]
+// //nextQuestion();
+
+
+
+
+// //answers.textContent = q.option
+
+// // submitBtn.addEventListener('click', function (event, array) {
+// //     event.preventDefault();
+// //     for (var i = 0; i < q.title.length; i++) {
+// //         //element = event.target;
+// //         //var element = event.target;
+
+// //         // select dom element headerDiv by id and assign to variable
+// //         //var h2Div = document.getElementById('headerDiv');
+// //         // modify the text
+// //         //question.title[i]++;
+// //         h2Div.textContent = q.title[i];
+
+
+// //         //for (var i = 0; i < q.title.length; i++) {
+// //         //select all input elements with the same class
+// //         //var answers = document.querySelectorAll('label');
+// //         //answers.textContent = q.options[i];
+
+// //         //console.log(option);
+
+// //         // for each of the answers, display text from the question object using iterations through the options array
+// //         answers.forEach(function (element, index) {
+// //             element.textContent = q.options[index];
+// //         })
+
+
+
+
+// //function nextQuestion(q) {
+// // submitBtn.addEventListener('click', function (event) {
+// //     event.preventDefault();
+// // console.log("hi")
+// // for (var i = 0; i < q.length; i++) {
+// //     q.title[i++]
+// //     h2Div.textContent = q.title[i]
+// //     answers.textContent = q.options[i]
+// //     seeQuestion(i++)
+// //     //seeQuestion(i++);
+// //     //seeQuestion(q);
+// // }
+// // ;
+
+
+
+// // submitBtn.addEventListener('click', function (event) {
+// //     event.preventDefault();
+// //     for (var i = 0; i < q.title.length; i++) {
+// //         var h2Div = document.getElementById('headerDiv');
+// //         h2Div.textContent = q.title[i];
+// //         var answers = document.querySelectorAll('label');
+// //         answers.textContent = q.options[i];
+// //         q.answer[i];
+
+
+
+
+
+// //     }
+// // })
+
+// // var question2 = {
+// //     title: 'Question 2',
+// //     options: ['to', 'to', 'to', 'to'],
+// //     answer: 2
+// // };
+
+
+// //seeQuestion(question);
+
+
+
+// var select = document.getElementById('choice');
+// select.addEventListener("keyof", function () {
+//     if (select.value == checked) {
+//         console.log('not');
+//     } else {
+//         console.log('clicked')
+//     }
 // });
 
+// // var select = document.getElementById('a1');
+// // select.addEventListener('click', function () {
+// //     console.log('Clicked!');
+// // });
 
-//var selectInput = document.querySelectorAll('.option')
 
-
-
-// function answerQuestion(q) {
-//     var selectInput = document.querySelectorAll('.option');
-//     selectInput.addEventListener('click', function (e, index) {
-//         e.preventDefault();
-//         if (selectInput.value === q.answer[index]) {
-//             scoreDiv++;
-//             var count = document.createElement("p")
-//             count.textContent = scoreDiv.value;
-//             scoreDiv.appendChild(count);
-//         }
-
-//     });
-// };
+// //var selectInput = document.querySelectorAll('.option')
 
 
 
-// const img = document.createElement("img");
-// img.src = "https://code-quiz/assets/images/tooth.png";
-// document.body.appendChild(img);
+// // function answerQuestion(q) {
+// //     var selectInput = document.querySelectorAll('.option');
+// //     selectInput.addEventListener('click', function (e, index) {
+// //         e.preventDefault();
+// //         if (selectInput.value === q.answer[index]) {
+// //             scoreDiv++;
+// //             var count = document.createElement("p")
+// //             count.textContent = scoreDiv.value;
+// //             scoreDiv.appendChild(count);
+// //         }
+
+// //     });
+// // };
 
 
 
-// var nextBtn = document.getElementById('submit');
-// //this function will be executed every time their is a click on the button
-// nextBtn.addEventListener('click', function () {
-//     console.log('clicked next');
+// // const img = document.createElement("img");
+// // img.src = "https://code-quiz/assets/images/tooth.png";
+// // document.body.appendChild(img);
+
+
+
+// // var nextBtn = document.getElementById('submit');
+// // //this function will be executed every time their is a click on the button
+// // nextBtn.addEventListener('click', function () {
+// //     console.log('clicked next');
