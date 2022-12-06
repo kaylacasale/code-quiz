@@ -16,8 +16,9 @@
     </div>
     <h1 class="time"></h1>
     <div id="timeUp"></div>
+    <!-- <div id="userInfo"></div> -->
     <div class="container-questions">
-        <form>
+        <form id="quiz">
             <div id="headerDiv">
                 <h2 id="questionHeader"></h2>
             </div>
@@ -40,6 +41,23 @@
             <div id="scoreDiv">
                 <p></p>
             </div>
+        </form>
+        <form id="userInfo">
+            <div class="input-group">
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name" placeholder="Coder" />
+            </div>
+            <div class="input-group">
+                <label for="email">Email: </label>
+                <input type="text" name="email" id="email" placeholder="coder@ucla.org" />
+            </div>
+            <div class="card">
+                <h2>Saved User</h2>
+                <p>User Name: <span id="saved-name"></span></p>
+                <p>User Email: <span id="saved-email"></span></p>
+                <p>User Score: <span id="saved-score"></span></p>
+            </div>
+            <button id="save">SAVE</button>
         </form>
     </div>
 

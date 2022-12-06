@@ -1,10 +1,53 @@
 var startEl = document.querySelector(".start");
 var startTextEl = document.querySelector(".startQuiz");
 var startBtn = document.getElementById("startBtn");
-var formEl = document.querySelector("form");
+var formEl = document.getElementById("quiz")
 formEl.style.display = "none";
 var submitBtn;
+var emailInput = document.querySelector("#email")
+//emailInput.style.display = "none";
+var submitFormEl = document.getElementById("userInfo");
+submitFormEl.style.display = "none";
+var nameInput = document.getElementById("name");
+var saveBtn = document.getElementById("save");
+var savedName = document.getElementById("saved-name");
+//console.log(scoreCount);
 
+function saveScore() {
+    var userInput = {
+        userName: nameInput.value,
+        userEmail: emailInput.value,
+        //score: scoreCount.value
+    }
+    localStorage.setItem("userInput", JSON.stringify(userInput));
+    localStorage.setItem("scoreNow", JSON.stringify(scoreNow));
+}
+
+function renderScore() {
+    var userSaved = JSON.parse(localStorage.getItem("userInput"));
+    var scoreSaved = JSON.parse(localStorage.getItem("score"));
+
+
+    if (userSaved !== null) {
+        document.getElementById("saved-name").innerHTML = userSaved.userName;
+        document.getElementById("saved-email").innerHTML = userSaved.userEmail;
+        document.getElementById("saved-score").innerHTML = scoreSaved;
+        //document.getElementById("saved-score").innerHTML = scoreCount.score;
+    } else {
+        return;
+    }
+}
+
+saveBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    saveScore();
+    renderScore();
+})
+
+function init() {
+    renderScore();
+}
+init();
 function startQuiz() {
     startBtn.addEventListener("click", function () {
         startTextEl.textContent = " ";
@@ -48,6 +91,8 @@ function timerUpMessage() {
     timerUpEl.appendChild(h1El);
     formEl.style.display = "none"; // clear (hide) form element when timerUpMessage is called from startTime (if time=0)
     startBtn.style.display = "none"; // clear (hide) startBtn (changed text in TimerUp function) when timerUpMessage is called from startTime (when time=0)
+    submitFormEl.style.display = "block";
+
 }
 
 //startTime();
@@ -154,13 +199,14 @@ function handleChoiceClick(event) {
 }
 
 var result;
+var scoreNow;
 
 function checkAnswer(event) {
     event.preventDefault();
     //var userAnswer = event.target;
     console.log(event.target.answer)
     console.log(event.target.dataset.correct);
-    var scoreNew = localStorage.getItem("count");
+    scoreNow = localStorage.getItem("count");
     if (event.target.dataset.correct == 'true') {
         result = document.createElement("p")
         result.textContent = "Correct!";
@@ -181,30 +227,24 @@ function checkAnswer(event) {
     }
     //console.log(userAnswer.value);
     nextQuestion();
-
-
-    //console.log(questions.answer[currentQuestion]);
-    //var answerCorrect = questions.a
-    //console.log(questions.option[questions.answer]);
-
-
 }
+
 function nextQuestion() {
 
     //event.preventDefault();
     currentQuestion++
     renderQuestion();
-
-
-
-
-
-    //see if answer is right
-    //show next button
 }
 
 
 
+
+//see if answer is right
+    //show next button
+
+ //console.log(questions.answer[currentQuestion]);
+    //var answerCorrect = questions.a
+    //console.log(questions.option[questions.answer]);
 
 // function nextQuestion(event) {
 //     currentQuestion++
