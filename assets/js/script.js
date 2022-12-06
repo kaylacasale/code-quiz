@@ -59,16 +59,27 @@ var currentQuestion = 0; // ++
 var questions = [
     {
         title: "Question 1",
-        options: ["a1", "a2", "a3", "a4"],
+        option: ["a1", "a2", "a3", "a4"],
         answer: 1,
         score: 1
     },
     {
         title: "Question 2",
-        option: ["a1", "a2", "a3", "a4"],
+        option: ["b1", "b2", "b3", "b4"],
         answer: 1,
         score: 1
-
+    },
+    {
+        title: "Question 3",
+        option: ["c1", "c2", "c3", "c4"],
+        answer: 1,
+        score: 1
+    },
+    {
+        title: "Question 4",
+        option: ["d1", "d2", "d3", "d4"],
+        answer: 1,
+        score: 1
     }
 ]
 
@@ -76,7 +87,7 @@ var questions = [
 function renderQuestion() {
     var question = questions[currentQuestion];
     var title = question.title; //make variables for each based on question
-    var options = question.options;
+    var options = question.option;
     var answer = question.answer;
     var score = question.score;
 
