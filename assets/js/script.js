@@ -13,6 +13,7 @@ var saveBtn = document.getElementById("save");
 var savedName = document.getElementById("saved-name");
 //console.log(scoreCount);
 
+var scoreNow = 0;
 function saveScore() {
     var userInput = {
         userName: nameInput.value,
@@ -20,7 +21,7 @@ function saveScore() {
         //score: scoreCount.value
     }
     localStorage.setItem("userInput", JSON.stringify(userInput));
-    //localStorage.setItem("scoreNow", JSON.stringify(scoreNow));
+    localStorage.setItem("scoreNow", JSON.stringify(scoreNow));
 }
 
 function renderScore() {
@@ -68,7 +69,7 @@ startQuiz();
 var timerEl = document.querySelector(".time");
 var timerUpEl = document.getElementById("timeUp");
 var updateTime;
-var secondsLeft = 10;
+var secondsLeft = 30;
 
 function startTime() {
     var updateTime = setInterval(function () {
@@ -77,19 +78,29 @@ function startTime() {
         // seeQuestion(question);
 
         if (secondsLeft === 0) {
-            clearInterval(updateTime);
+            //clearInterval(updateTime);
             timerUpMessage();
         }
 
     }, 1000);
+
+    startBtn.addEventListener("click", function () {
+        //checkAnswer();
+
+        timerUpMessage();
+        console.log("end")
+    })
 
 }
 
 //enter timerUpMessage displayed at end (score, results, form to save score with contact info) and make form element dissapear when time = 0 (when timerUpMessage is called)
 function timerUpMessage() {
     timerEl.textContent = " ";
+    timerEl.style.display = "none";
+    clearInterval(updateTime)
     var h1El = document.createElement("h1");
-    h1El.textContent = "Time is Up! Quiz Results:";
+    h1El.textContent = " ";
+    h1El.textContent = "Time is Up! Quiz Results: " + currentScore;
     timerUpEl.appendChild(h1El);
     timerUpEl.setAttribute("style", "font-size: 20px; background-color: aliceblue; font-weight: bold; ")
     formEl.style.display = "none"; // clear (hide) form element when timerUpMessage is called from startTime (if time=0)
@@ -109,26 +120,26 @@ var currentScore = 0;
 var currentQuestion = 0; // ++ 
 var questions = [
     {
-        title: "Question 1",
-        option: ["a1", "a2", "a3", "a4"],
-        answer: 1,
+        title: "How would you log the length of the window object?",
+        option: ["console.log(window)", "window.length", "console.log(window.length)", "console.log(length)"],
+        answer: 2,
         score: 1
     },
     {
-        title: "Question 2",
-        option: ["b1", "b2", "b3", "b4"],
+        title: "If a button element was appended to each of 'i' divs in a for loop, how many button elements would exist?",
+        option: ["i.length", "i", "i[0]", "1"],
         answer: 1,
         score: 1 //possibly unneccessary 
     },
     {
-        title: "Question 3",
-        option: ["c1", "c2", "c3", "c4"],
-        answer: 1,
+        title: "Where in an index.html file would you link script components from bootstrap?",
+        option: ["<body>", "<main>", "<a href>", "<head>"],
+        answer: 3,
         score: 1
     },
     {
-        title: "Question 4",
-        option: ["d1", "d2", "d3", "d4"],
+        title: "What is not a method of selecting an element in JavaScript?",
+        option: ["document.getElementbyId('.id')", "$('#id')", "document.getElementbyId('id')", "document.querySelector('#id')"],
         answer: 1,
         score: 1
     }
@@ -137,10 +148,11 @@ var questions = [
 
 function renderQuestion() {
     var question = questions[currentQuestion];
-    var title = question["title"]; //make variables for each based on question
+    var title = question.title; //make variables for each based on question
     var options = question.option;
     var answer = question.answer;
     var score = question.score;
+
     // var bodyEl = document.querySelector("body");
     // bodyEl.setAttribute("src", "code-quiz/assets/images/wallpaper-desktop.jpeg")
 
@@ -200,11 +212,12 @@ function renderQuestion() {
 function handleChoiceClick(event) {
     event.preventDefault();
     checkAnswer(event);
+
     //nextQuestion(event);
 }
 
 var result;
-var scoreNow;
+// var scoreNow;
 
 function checkAnswer(event) {
     event.preventDefault();
@@ -229,10 +242,16 @@ function checkAnswer(event) {
         //currentScore;
         scoreNow = currentScore;
         scoreCount.textContent = "SCORE: " + currentScore;
+        localStorage.setItem("score", scoreNow);
         //scoreCount.textContent = scoreNow;
+    } else {
+        scoreNow = currentScore;
+        localStorage.setItem("score", scoreNow);
     }
     //console.log(userAnswer.value);
     nextQuestion();
+
+
 }
 
 function nextQuestion() {
@@ -240,6 +259,7 @@ function nextQuestion() {
     //event.preventDefault();
     currentQuestion++
     renderQuestion();
+    console.log(currentQuestion)
 }
 
 
