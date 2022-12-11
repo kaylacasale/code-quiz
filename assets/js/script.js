@@ -11,6 +11,9 @@ submitFormEl.style.display = "none";
 var nameInput = document.getElementById("name");
 var saveBtn = document.getElementById("save");
 var savedName = document.getElementById("saved-name");
+// var img = document.createElement("img");
+// img.src = "/Users/kaylacasale/Desktop/UCLA/homework/04-homework/code-quiz/assets/images/wallpaper1.jpeg"
+// document.appendChild(img);
 //console.log(scoreCount);
 
 var scoreNow = 0;
@@ -51,6 +54,7 @@ function init() {
 init();
 function startQuiz() {
     startBtn.addEventListener("click", function () {
+        timerEl.style.display = "block"
         startTextEl.textContent = " ";
         startBtn.textContent = "End Quiz";
         formEl.style.display = "block";
@@ -67,6 +71,7 @@ function startQuiz() {
 startQuiz();
 
 var timerEl = document.querySelector(".time");
+timerEl.style.display = "none"
 var timerUpEl = document.getElementById("timeUp");
 var updateTime;
 var secondsLeft = 30;
