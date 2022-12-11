@@ -30,11 +30,7 @@ WHEN I answer a question incorrectly
 
 THEN I do not gain a point towards my overall score
 
-WHEN all questions are answered and I click the end button or the timer reaches 0
-
-THEN time is subtracted from the clocl
-
-WHEN all questions are answerwd or the timer reaches 0
+WHEN all questions are answered and I click the end button or when the timer reaches 0
 
 THEN the game is over
 
