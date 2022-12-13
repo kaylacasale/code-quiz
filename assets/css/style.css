@@ -1,7 +1,7 @@
 body {
     font-size: 30px;
     font-family: 'Comfortaa', cursive;
-    background-image: url('/Users/kaylacasale/Desktop/UCLA/homework/04-homework/code-quiz/assets/images/wallpaper1.jpeg');
+    background-image: url('/Users/kaylacasale/Desktop/UCLA/homework/04-homework/code-quiz/assets/images/mac wallpaper purple waves.png');
     background-size: 1500px 1000px;
     background-color: aliceblue;
     box-sizing: block;
@@ -9,7 +9,7 @@ body {
 }
 
 .time {
-    background-color: aliceblue;
+    background-color: rgb(191, 97, 215);
     border-radius: 20px;
     font-size: 25px;
     width: 20%;
@@ -45,7 +45,7 @@ form {
     font-size: 25px;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
-    background: rgb(189, 201, 248);
+    background: rgb(173, 152, 220);
     padding: 15px 40px;
     border-radius: 4px;
     font-weight: normal;
@@ -66,6 +66,7 @@ form {
 }
 
 #save {
+    margin-top: 25px;
     margin-left: 25px;
     font-size: 25px;
     text-decoration: none;
@@ -89,13 +90,13 @@ form {
     font-size: 25px;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
-    background: rgb(189, 201, 248);
+    background: rgb(174, 130, 240);
     padding: 15px 40px;
     border-radius: 4px;
     font-weight: normal;
     text-transform: lowercase;
     transition: all 0.2s ease-in-out;
-    border-color: aliceblue;
+    border-color: rgb(136, 88, 172);
     font-family: 'Courier New', Courier, monospace;
 }
 

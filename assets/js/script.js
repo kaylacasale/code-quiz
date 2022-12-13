@@ -103,7 +103,7 @@ function timerUpMessage() {
     h1El.textContent = " ";
     h1El.textContent = "Time is Up! Quiz Results: " + currentScore;
     timerUpEl.appendChild(h1El);
-    timerUpEl.setAttribute("style", "font-size: 20px; background-color: aliceblue; font-weight: bold; ")
+    timerUpEl.setAttribute("style", "font-size: 20px; background-color: #C15495; font-weight: bold; ")
     formEl.style.display = "none"; // clear (hide) form element when timerUpMessage is called from startTime (if time=0)
     startBtn.style.display = "none"; // clear (hide) startBtn (changed text in TimerUp function) when timerUpMessage is called from startTime (when time=0)
     submitFormEl.style.display = "block";
