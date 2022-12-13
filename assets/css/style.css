@@ -87,7 +87,9 @@ form {
 
 .btn {
     margin-left: 25px;
+    margin-top: 25px;
     display: inline-block;
+    width: 400px;
     font-size: 18px;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.8);
