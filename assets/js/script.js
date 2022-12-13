@@ -5,16 +5,12 @@ var formEl = document.getElementById("quiz")
 formEl.style.display = "none";
 var submitBtn;
 var emailInput = document.querySelector("#email")
-//emailInput.style.display = "none";
 var submitFormEl = document.getElementById("userInfo");
 submitFormEl.style.display = "none";
 var nameInput = document.getElementById("name");
 var saveBtn = document.getElementById("save");
 var savedName = document.getElementById("saved-name");
-// var img = document.createElement("img");
-// img.src = "/Users/kaylacasale/Desktop/UCLA/homework/04-homework/code-quiz/assets/images/wallpaper1.jpeg"
-// document.appendChild(img);
-//console.log(scoreCount);
+
 
 var scoreNow = 0;
 function saveScore() {
@@ -98,7 +94,7 @@ function startTime() {
 
 }
 
-//enter timerUpMessage displayed at end (score, results, form to save score with contact info) and make form element dissapear when time = 0 (when timerUpMessage is called)
+//*enter timerUpMessage displayed at end (score, results, form to save score with contact info) and make form element dissapear when time = 0 (when timerUpMessage is called)
 function timerUpMessage() {
     timerEl.textContent = " ";
     timerEl.style.display = "none";
@@ -117,8 +113,8 @@ function timerUpMessage() {
 
 
 
-//wrap- array of objects 
-//mimic a for loop
+//*wrap- array of objects 
+//*mimic a for loop
 
 var scoreCount = document.getElementById("scoreDiv")
 var currentScore = 0;
@@ -134,7 +130,7 @@ var questions = [
         title: "If a button element was appended to each of 'i' divs in a for loop, how many button elements would exist?",
         option: ["i.length", "i", "i[0]", "1"],
         answer: 1,
-        score: 1 //possibly unneccessary 
+        score: 1 //*possibly unneccessary 
     },
     {
         title: "Where in an index.html file would you link script components from bootstrap?",
@@ -143,7 +139,7 @@ var questions = [
         score: 1
     },
     {
-        title: "What is not a method of selecting an element in JavaScript?",
+        title: "Which is NOT a method of selecting an element in JavaScript?",
         option: ["document.getElementbyId('.id')", "$('#id')", "document.getElementbyId('id')", "document.querySelector('#id')"],
         answer: 1,
         score: 1
@@ -153,13 +149,12 @@ var questions = [
 
 function renderQuestion() {
     var question = questions[currentQuestion];
-    var title = question.title; //make variables for each based on question
+    var title = question.title; //*make variables for each based on question
     var options = question.option;
     var answer = question.answer;
     var score = question.score;
 
-    // var bodyEl = document.querySelector("body");
-    // bodyEl.setAttribute("src", "code-quiz/assets/images/wallpaper-desktop.jpeg")
+
 
     var questionsHeader = document.querySelector("#questionHeader")
     var choice1Btn = document.querySelector("#choice1")
@@ -186,19 +181,6 @@ function renderQuestion() {
     }
 
 
-    //var scoreNow = 0;
-    // if (choice2Btn.dataset.correct = true) {
-    //     currentScore++
-    //     var scoreNow = currentScore;
-    //     console.log(scoreNow)
-    // }
-
-
-    // var scoreNow = + score
-    // //currentScore.textContent = scoreNow;
-    // console.log(currentScore);
-    // scoreCount.textContent = scoreNow;
-
 
 
 
@@ -207,10 +189,6 @@ function renderQuestion() {
     choice3Btn.addEventListener("click", handleChoiceClick)
     choice4Btn.addEventListener("click", handleChoiceClick)
 
-    // choice1Btn.addEventListener("click", checkAnswer)
-    // choice2Btn.addEventListener("click", checkAnswer)
-    // choice3Btn.addEventListener("click", checkAnswer)
-    // choice4Btn.addEventListener("click", checkAnswer)
 
 
 }
@@ -270,217 +248,3 @@ function nextQuestion() {
 
 
 
-//see if answer is right
-    //show next button
-
- //console.log(questions.answer[currentQuestion]);
-    //var answerCorrect = questions.a
-    //console.log(questions.option[questions.answer]);
-
-// function nextQuestion(event) {
-//     currentQuestion++
-//     renderQuestion(currentQuestion);
-// }
-// var question = {
-//     title: ['Question 4', 'Question 2', 'Question 3'],
-//     options: (['an', 'an', 'an', 'an'], ['to', 'for', 'to', 'to']),
-//     //answer: 1
-// };
-// var counter = 0;
-// var h2Div = document.getElementById('headerDiv')
-// var answers = document.querySelectorAll('label');
-// h2Div.textContent = question.title[counter];
-// answers.textContent = question.options[counter]
-
-// answers.forEach(function (element, index) {
-//     element.textContent = question.options[index];
-// })
-// //var length = question.title.length;
-// //h2Div.textContent = question.title[0]
-// //answers.textContent = question.options[0[0]]
-// // show each question
-// function seeQuestion(q) {
-//     //h2Div.textContent = q.title;
-//     // var h2Div = document.getElementById('headerDiv')
-//     // var answers = document.querySelectorAll('label');
-//     // h2Div.textContent = q.title[0]
-//     // answers.textContent = q.options[0[0]]
-
-//     submitBtn.addEventListener('click', function (event) {
-//         //h2Div.textContent = question.title[0];
-//         //answers.textContent = question.options[0]
-//         //for (var i = 0; i < 2; i++) {
-//         //console.log(question.title[i])
-//         counter++
-
-//         console.log(q.title[counter]);
-//         event.preventDefault()
-//         var nextq = q.title[counter];
-//         //var nextq = q[i].title;
-//         console.log(nextq)
-//         h2Div.textContent = nextq;
-
-//         //for (var i = 0; i < 5; i++) {
-//         event.preventDefault();
-//         var nextqa = q[0].options[counter]
-//         console.log(nextqa)
-
-//         //}
-
-
-//         //q.title[i++]
-//         // h2Div.textContent = q.title[i]
-//         // answers.textContent = q.options[i]
-//         // console.log("hi")
-
-//         //h2Div.textContent = nextq
-//         answers.innerHTML = nextqa
-//         console.log("hi")
-
-
-
-
-//     })
-
-//     //nextQuestion(q);
-
-
-// }
-
-
-// // for (var i = 0; i < highScores.length; i++) {
-// //     var score = document.createElement("p");
-// //     score.textContent = highScores[i].initials
-// // }
-// // submitBtn.addEventListener('click', function (event) {
-// //     event.preventDefault();
-// //nextQuestion(q);
-// // for (var i = 0; i < q.title.length; i++) {
-// //     h2Div.textContent = q.title[i]
-// //     answers.textContent = q.options[i]
-
-// //q.title[i]
-// //q.answers[[i]]
-// //nextQuestion();
-
-
-
-
-// //answers.textContent = q.option
-
-// // submitBtn.addEventListener('click', function (event, array) {
-// //     event.preventDefault();
-// //     for (var i = 0; i < q.title.length; i++) {
-// //         //element = event.target;
-// //         //var element = event.target;
-
-// //         // select dom element headerDiv by id and assign to variable
-// //         //var h2Div = document.getElementById('headerDiv');
-// //         // modify the text
-// //         //question.title[i]++;
-// //         h2Div.textContent = q.title[i];
-
-
-// //         //for (var i = 0; i < q.title.length; i++) {
-// //         //select all input elements with the same class
-// //         //var answers = document.querySelectorAll('label');
-// //         //answers.textContent = q.options[i];
-
-// //         //console.log(option);
-
-// //         // for each of the answers, display text from the question object using iterations through the options array
-// //         answers.forEach(function (element, index) {
-// //             element.textContent = q.options[index];
-// //         })
-
-
-
-
-// //function nextQuestion(q) {
-// // submitBtn.addEventListener('click', function (event) {
-// //     event.preventDefault();
-// // console.log("hi")
-// // for (var i = 0; i < q.length; i++) {
-// //     q.title[i++]
-// //     h2Div.textContent = q.title[i]
-// //     answers.textContent = q.options[i]
-// //     seeQuestion(i++)
-// //     //seeQuestion(i++);
-// //     //seeQuestion(q);
-// // }
-// // ;
-
-
-
-// // submitBtn.addEventListener('click', function (event) {
-// //     event.preventDefault();
-// //     for (var i = 0; i < q.title.length; i++) {
-// //         var h2Div = document.getElementById('headerDiv');
-// //         h2Div.textContent = q.title[i];
-// //         var answers = document.querySelectorAll('label');
-// //         answers.textContent = q.options[i];
-// //         q.answer[i];
-
-
-
-
-
-// //     }
-// // })
-
-// // var question2 = {
-// //     title: 'Question 2',
-// //     options: ['to', 'to', 'to', 'to'],
-// //     answer: 2
-// // };
-
-
-// //seeQuestion(question);
-
-
-
-// var select = document.getElementById('choice');
-// select.addEventListener("keyof", function () {
-//     if (select.value == checked) {
-//         console.log('not');
-//     } else {
-//         console.log('clicked')
-//     }
-// });
-
-// // var select = document.getElementById('a1');
-// // select.addEventListener('click', function () {
-// //     console.log('Clicked!');
-// // });
-
-
-// //var selectInput = document.querySelectorAll('.option')
-
-
-
-// // function answerQuestion(q) {
-// //     var selectInput = document.querySelectorAll('.option');
-// //     selectInput.addEventListener('click', function (e, index) {
-// //         e.preventDefault();
-// //         if (selectInput.value === q.answer[index]) {
-// //             scoreDiv++;
-// //             var count = document.createElement("p")
-// //             count.textContent = scoreDiv.value;
-// //             scoreDiv.appendChild(count);
-// //         }
-
-// //     });
-// // };
-
-
-
-// // const img = document.createElement("img");
-// // img.src = "https://code-quiz/assets/images/tooth.png";
-// // document.body.appendChild(img);
-
-
-
-// // var nextBtn = document.getElementById('submit');
-// // //this function will be executed every time their is a click on the button
-// // nextBtn.addEventListener('click', function () {
-// //     console.log('clicked next');
