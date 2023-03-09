@@ -78,7 +78,9 @@ THEN I can save my name, email, and score
 ## Mock-up
 The following shows the web application's appearance and functionality.
 
-https://user-images.githubusercontent.com/115776118/207259014-76ae0688-b230-4710-8c3e-3e4609d08ede.mov
+![Mockup](https://media.giphy.com/media/7LzJHaURMv7FzogBtW/giphy.gif "GIF of Mockup")
+
+<!-- https://user-images.githubusercontent.com/115776118/207259014-76ae0688-b230-4710-8c3e-3e4609d08ede.mov -->
 
 ### Focus Points
 Web APIs | Local Storage | Javascript | Automation with For Loops | Dynamic Elements | Set Timer | **Object-Oriented Mapping**
